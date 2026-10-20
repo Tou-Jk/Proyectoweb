@@ -37,6 +37,48 @@
           loadComponent("footer-container", "/components/footer.html"),
         ]);
 
+        const contactForm = document.querySelector(".contact-form");
+        const contactNotification = document.getElementById(
+          "contact-form-notification",
+        );
+        const contactSubmit = contactForm.querySelector(
+          'button[type="submit"]',
+        );
+
+        contactForm.addEventListener("submit", async function (event) {
+          event.preventDefault();
+          contactSubmit.disabled = true;
+          contactNotification.hidden = false;
+          contactNotification.classList.remove("is-error");
+          contactNotification.textContent = "Enviando tu mensaje...";
+
+          try {
+            const response = await fetch(contactForm.action, {
+              method: contactForm.method,
+              body: new FormData(contactForm),
+              headers: { Accept: "application/json" },
+            });
+            const result = await response.json();
+
+            if (!response.ok || !result.success) {
+              throw new Error(
+                result.message || "No se pudo enviar tu mensaje. Inténtalo de nuevo.",
+              );
+            }
+
+            contactForm.reset();
+            contactNotification.textContent = result.message;
+          } catch (error) {
+            contactNotification.classList.add("is-error");
+            contactNotification.textContent =
+              error instanceof Error
+                ? error.message
+                : "Ocurrió un error al enviar el mensaje. Inténtalo de nuevo.";
+          } finally {
+            contactSubmit.disabled = false;
+          }
+        });
+
         const menu = document.querySelector(".menu");
         const menuToggle = document.querySelector(".menu-toggle");
         const closeMenu = function () {
