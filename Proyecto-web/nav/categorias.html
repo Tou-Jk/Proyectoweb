@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Materiales puesta a tierra | Proyelectric</title>
+    <meta
+      name="description"
+      content="Conoce los materiales para puesta a tierra de Proyelectric y consulta disponibilidad con nuestro equipo."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Nunito:wght@400;600;700;800&family=Open+Sans:ital,wght@0,400;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/vendor/fontawesome/css/all.css" />
+    <link rel="stylesheet" href="/css/base.css?v=8" />
+    <link rel="stylesheet" href="/css/categorias.css?v=8" />
+  </head>
+  <body class="category-page-body">
+    <div id="header-container"></div>
+    <main id="page-container"></main>
+    <div id="footer-container"></div>
+
+    <script>
+      async function loadComponent(targetId, url) {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error("No se pudo cargar " + url);
+        }
+        document.getElementById(targetId).innerHTML = await response.text();
+      }
+
+      async function initCategoryPage() {
+        await Promise.all([
+          loadComponent("header-container", "/components/header.html"),
+          loadComponent("page-container", "/components/category-body.html"),
+          loadComponent("footer-container", "/components/footer.html"),
+        ]);
+
+        const menu = document.querySelector(".menu");
+        const menuToggle = document.querySelector(".menu-toggle");
+        const closeMenu = function () {
+          menu.classList.remove("is-open");
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.querySelector("i").className = "fa-solid fa-bars";
+        };
+
+        menuToggle.addEventListener("click", function () {
+          const isOpen = menu.classList.toggle("is-open");
+          menuToggle.setAttribute("aria-expanded", String(isOpen));
+          menuToggle.querySelector("i").className = isOpen
+            ? "fa-solid fa-xmark"
+            : "fa-solid fa-bars";
+        });
+        menu.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", closeMenu);
+        });
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") closeMenu();
+        });
+
+        const header = document.querySelector(".header");
+        if (header) {
+          window.addEventListener(
+            "scroll",
+            function () {
+              header.classList.toggle("flota", window.scrollY > 70);
+            },
+            { passive: true },
+          );
+        }
+      }
+
+      initCategoryPage().catch(function (error) {
+        console.error(error);
+      });
+    </script>
+  </body>
+</html>

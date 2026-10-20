@@ -1,0 +1,265 @@
+/* Product category page. */
+
+.category-page-body .header-info p {
+  color: #081130;
+}
+
+.category-page-body .header-info .redes a {
+  background: #081130;
+  color: #fff;
+}
+
+.category-page-body .header-info .redes a:hover {
+  background: #f8ad00;
+  color: #081130;
+}
+
+.category-page {
+  padding-top: 166px;
+  background: #fff;
+}
+
+.category-banner {
+  height: clamp(150px, 20vw, 245px);
+  background:
+  linear-gradient(90deg, rgb(8 17 48 / 18%), rgb(8 17 48 / 3%)),
+  url("/img/central.jpg") center 43% / cover no-repeat;
+}
+
+.category-container {
+  width: min(900px, var(--container-width));
+  margin: 0 auto;
+}
+
+.category-products {
+  padding-top: 30px;
+  padding-bottom: 32px;
+}
+
+.category-heading {
+  margin-bottom: 18px;
+}
+
+.category-heading span {
+  display: block;
+  color: #6c7075;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.category-heading h1 {
+  color: #292929;
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 30px 12px;
+}
+
+.category-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 8px 0;
+  border: 1px solid #d8d8d8;
+  border-radius: 7px;
+  background: #fff;
+}
+
+.category-card img {
+  width: 100%;
+  height: 132px;
+  object-fit: contain;
+}
+
+.category-card h2 {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  margin: 4px 0 5px;
+  color: #62666a;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.category-card a {
+  display: grid;
+  width: calc(100% + 2px);
+  min-height: 34px;
+  place-items: center;
+  margin-bottom: -1px;
+  border-radius: 20px;
+  background: #8295a6;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  transition: background-color 0.2s ease;
+}
+
+.category-card a:hover,
+.category-card a:focus-visible {
+  background: #081130;
+}
+
+.category-contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 42px 0 8px;
+}
+
+.category-contact p {
+  color: #414141;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: right;
+}
+
+.category-contact img {
+  width: min(290px, 100%);
+}
+
+@media (max-width: 720px) {
+  .category-page {
+    padding-top: 0;
+  }
+
+  .category-banner {
+    height: clamp(145px, 35vw, 210px);
+  }
+
+  .category-products {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 10px;
+  }
+
+  .category-card img {
+    height: 120px;
+  }
+
+  .category-contact {
+    gap: 12px;
+    padding-top: 32px;
+  }
+
+  .category-contact p {
+    font-size: 15px;
+  }
+
+  .category-contact img {
+    width: min(220px, 100%);
+  }
+
+  .category-page-body .footer .contenedor {
+    width: var(--container-width);
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+  }
+
+  .category-page-body .footer-eslogan {
+    grid-column: 1;
+    grid-row: 1;
+    padding: 28px 0;
+    font-size: 22px;
+  }
+
+  .category-page-body .footer hr {
+    grid-column: 1;
+    grid-row: 2;
+    margin: 0 0 28px;
+  }
+
+  .category-page-body .footer-grid {
+    grid-column: 1;
+    grid-row: 3;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .category-page-body .footer-grid .footer-col {
+    padding: 0;
+  }
+
+  .category-page-body .certificaciones {
+    grid-column: 1;
+    grid-row: 4;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 28px;
+    padding: 0;
+  }
+
+  .category-page-body .certificaciones img {
+    max-width: 100%;
+    max-height: 82px;
+    object-fit: contain;
+  }
+
+  .category-page-body .certificaciones .iso {
+    align-self: center;
+  }
+
+  .category-page-body .copyright {
+    grid-column: 1;
+    grid-row: 5;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-container {
+    width: min(100% - 28px, 900px);
+  }
+
+  .category-grid {
+    gap: 14px 8px;
+  }
+
+  .category-card {
+    padding: 8px 6px 0;
+  }
+
+  .category-card img {
+    height: 100px;
+  }
+
+  .category-card h2 {
+    min-height: 48px;
+    font-size: 9px;
+  }
+
+  .category-card a {
+    min-height: 32px;
+    font-size: 9px;
+  }
+
+  .category-contact {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .category-contact p {
+    text-align: center;
+  }
+}
+
