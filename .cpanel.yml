@@ -1,5 +1,8 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/tounet/public_html/
-    - /bin/rsync -rav --exclude='.git*' --exclude='.cpanel.yml' * $DEPLOYPATH
+    - export DEPLOYPATH=/home/tounet/public_html
+    # Copiar el frontend (index.html, css, etc.) directamente a public_html
+    - /bin/cp -R Proyecto-web/* $DEPLOYPATH
+    # Copiar la carpeta server para el backend PHP
+    - /bin/cp -R server $DEPLOYPATH
