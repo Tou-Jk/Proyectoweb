@@ -29,12 +29,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $body .= "Ciudad: " . $ciudad . "\n\n";
     $body .= "Mensaje:\n" . $mensaje . "\n";
 
-    $headers = "From: webmaster@proyelectric.com\r\n";
+    $headers = "From: lopezluis@tou.net.pe\r\n";
     $headers .= "Reply-To: " . $email . "\r\n";
 
-    mail($to, $subject, $body, $headers);
+    if (!mail($to, $subject, $body, $headers)) {
+        http_response_code(500);
+        echo "<h1>No se pudo enviar tu mensaje</h1>";
+        echo "<p>Inténtalo de nuevo más tarde.</p>";
+        echo "<a href='../nav/contacto.html'>Volver al formulario</a>";
+        exit();
+    }
 
-    echo "<h1>¡Gracias, " . htmlspecialchars($nombre) . "!</h1>";
+    echo "<h1>¡Gracias, " . htmlspecialchars($nombre, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . "!</h1>";
     echo "<p>Tu mensaje ha sido enviado correctamente. Nos pondremos en contacto contigo pronto.</p>";
     echo "<a href='../index.html'>Volver al inicio</a>";
 
