@@ -81,18 +81,13 @@
         realidad.
       </p>
 
-      <form
-        class="contact-form"
-        action="mailto:correo_de_prueba@tou.net.pe"
-        method="post"
-        enctype="text/plain"
-      >
+      <form class="contact-form" action="server/registro.php" method="post">
         <div class="contact-form__row">
           <div class="contact-field">
             <label for="contact-name">Nombre completo</label>
             <input
               id="contact-name"
-              name="Nombre completo"
+              name="nombre"
               type="text"
               autocomplete="name"
               required
@@ -102,7 +97,7 @@
             <label for="contact-email">Correo</label>
             <input
               id="contact-email"
-              name="Correo"
+              name="email"
               type="email"
               autocomplete="email"
               required
@@ -112,7 +107,7 @@
             <label for="contact-phone">Teléfono</label>
             <input
               id="contact-phone"
-              name="Teléfono"
+              name="telefono"
               type="tel"
               autocomplete="tel"
               required
@@ -122,7 +117,7 @@
             <label for="contact-city">Ciudad</label>
             <input
               id="contact-city"
-              name="Ciudad"
+              name="ciudad"
               type="text"
               autocomplete="address-level2"
               required
@@ -133,7 +128,7 @@
           <label for="contact-message">Mensaje:</label>
           <textarea
             id="contact-message"
-            name="Mensaje"
+            name="mensaje"
             rows="3"
             required
           ></textarea>
